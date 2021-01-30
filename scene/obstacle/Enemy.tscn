@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://behavior/enemy/enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprite/enemy/enemy_frames.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.503
+
+[sub_resource type="Curve" id=3]
+max_value = 6.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.98916, 5.04545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 328.55
+
+[node name="enemy" type="RigidBody2D" groups=[
+"swarm",
+]]
+mode = 2
+physics_material_override = SubResource( 1 )
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 1 )
+health = 2
+alert_group = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.31754, 0.817539 )
+shape = SubResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 2.0
+scale_amount_curve = SubResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+frame = 3
+playing = true
+
+[node name="ChaseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
+visible = false
+shape = SubResource( 4 )
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_ChaseArea_body_entered"]

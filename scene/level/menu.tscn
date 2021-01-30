@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://behavior/utility/title.gd" type="Script" id=1]
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = -30.7013
+margin_top = -14.6833
+margin_right = 35.2987
+margin_bottom = -0.68325
+text = "Our Game"
+
+[node name="Button" type="Button" parent="."]
+margin_left = -17.6893
+margin_top = 0.366116
+margin_right = 20.3107
+margin_bottom = 20.3661
+rect_scale = Vector2( 0.957394, 0.636616 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.1, 0.1 )
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

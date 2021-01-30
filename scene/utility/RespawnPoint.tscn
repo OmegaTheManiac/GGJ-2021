@@ -1,17 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://behavior/utility/respawn_point.gd" type="Script" id=1]
+[ext_resource path="res://sprite/utility/respawn.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 19.461, 6.50508 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 83.6695
 
 [node name="RespawnPoint" type="Position2D"]
-position = Vector2( -2292.43, -281.341 )
 script = ExtResource( 1 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 31.1668, -26.0546 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -33.1126, -18.8012 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.83318, -57.0546 )
+texture = ExtResource( 2 )
+hframes = 2
+
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -0.0498734, -43.0008 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 438.453, -1048.25 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

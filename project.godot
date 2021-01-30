@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Collidable",
 "language": "GDScript",
-"path": "res://behavior/environment/collidable.gd"
+"path": "res://behavior/environment/physics/collidable.gd"
 }, {
 "base": "Collidable",
 "class": "Enemy",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Collidable",
 "class": "SpawnFlowItem",
 "language": "GDScript",
-"path": "res://behavior/environment/spawn_flow_item.gd"
+"path": "res://behavior/environment/physics/spawn_flow_item.gd"
 } ]
 _global_script_class_icons={
 "Collidable": "",
@@ -45,8 +45,17 @@ _global_script_class_icons={
 [application]
 
 config/name="GGJ 2021"
-run/main_scene="res://scene/main.tscn"
+run/main_scene="res://scene/level/menu.tscn"
 config/icon="res://etc/icon.png"
+
+[autoload]
+
+GameStateManager="*res://behavior/utility/game_state_manager.gd"
+PlayerController="*res://behavior/player/player_controller.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "AsepriteWizard" )
 
 [input]
 
@@ -83,4 +92,5 @@ right={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 0.0509804, 0.223529, 0.435294, 1 )
 environment/default_environment="res://etc/default_env.tres"

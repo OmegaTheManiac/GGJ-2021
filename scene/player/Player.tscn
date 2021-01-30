@@ -1,31 +1,60 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://etc/icon.png" type="Texture" id=2]
+[ext_resource path="res://behavior/player/player.gd" type="Script" id=1]
+[ext_resource path="res://sprite/player/oar_man.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://sprite/light_player.png" type="Texture" id=3]
+[ext_resource path="res://behavior/environment/lighting/light.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.9102, 31.445 )
+[sub_resource type="PhysicsMaterial" id=4]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.9356, 4.47086 )
+
+[sub_resource type="Curve" id=3]
 max_value = 6.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.98916, 5.04545 ), 0.0, 0.0, 0, 0 ]
 
 [node name="fisherman" type="RigidBody2D" groups=[
 "player",
 ]]
+mode = 2
+physics_material_override = SubResource( 4 )
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 1 )
+health = 2
+_min_damage_velocity = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+position = Vector2( 0.829019, -0.26487 )
+shape = SubResource( 2 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 6
 lifetime = 2.0
-scale_amount_curve = SubResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 90.0
+scale_amount_curve = SubResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+frame = 12
+playing = true
+
+[node name="Light" type="Light2D" parent="."]
+light_mask = 2
+position = Vector2( 2.04867, 0 )
+enabled = false
+texture = ExtResource( 3 )
+shadow_enabled = true
+shadow_gradient_length = 4.0
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Light"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.66, 0.66 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
