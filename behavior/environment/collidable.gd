@@ -21,8 +21,7 @@ func _process(delta: float) -> void:
 		_destroy()
 
 func _physics_process(_delta: float) -> void:
-	if $CPUParticles2D:
-		_control_particle_emitter()
+	_control_particle_emitter()
 	
 	# check for collision
 	_check_collisions()

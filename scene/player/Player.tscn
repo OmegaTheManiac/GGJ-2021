@@ -2,10 +2,10 @@
 
 [ext_resource path="res://etc/icon.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.9102, 31.445 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=2]
 max_value = 6.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.98916, 5.04545 ), 0.0, 0.0, 0, 0 ]
 
@@ -14,7 +14,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.98916, 5.04545 ), 0.0, 0.0
 ]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -28,4 +28,4 @@ drag_margin_v_enabled = true
 emitting = false
 amount = 6
 lifetime = 2.0
-scale_amount_curve = SubResource( 3 )
+scale_amount_curve = SubResource( 2 )

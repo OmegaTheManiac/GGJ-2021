@@ -3,7 +3,8 @@
 [ext_resource path="res://behavior/environment/spawn_flow.gd" type="Script" id=1]
 [ext_resource path="res://sprite/water_texture.png" type="Texture" id=2]
 [ext_resource path="res://scene/demo/Obstacle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://material/spawn_flow_water_material.tres" type="Material" id=4]
+[ext_resource path="res://material/opening_spawn_flow.tres" type="Material" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8362.61, 753.264 )
@@ -41,3 +42,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 15.1016, 0 )
 shape = SubResource( 1 )
+
+[node name="SpawnZoneStart" type="Position2D" parent="."]
+position = Vector2( -8312.56, -691.795 )
+
+[node name="SpawnZoneEnd" type="Position2D" parent="."]
+position = Vector2( -8313.65, 755.099 )
